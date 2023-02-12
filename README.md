@@ -53,28 +53,6 @@ To run small-scale experiments inside the docker container, we provide an end-to
 
 The script can take around 10-15 minutes to finish execution. After completion, you can see the generated data in the `run_experiments/experiment_data` folder. The generated plots can be found in the `run_experiments/Plots` folder. For copying the plots to your local filesystem, please use the [docker-cp](https://docs.docker.com/engine/reference/commandline/cp/) command.
 
-### What the plots should look like?
-
-### HPCG
-
-<img src="./wasi-mpi-rs/sample_outputs/HPCG/hpcg_flops.png" width="400" height="400"/>
-<img src="./wasi-mpi-rs/sample_outputs/HPCG/hpcg_bandwidth.png" width="400" height="400"/>
-
-### Intel MPI Benchmarks
-
-#### Alltoall
-<img src="./wasi-mpi-rs/sample_outputs/IMB/4_proc/Alltoall/Alltoall.png" width="400" height="400"/>
-
-#### AllReduce
-<img src="./wasi-mpi-rs/sample_outputs/IMB/4_proc/Allreduce/Allreduce.png" width="400" height="400"/>
-
-The remaining plots for the IntelMPI benchmarks can be found [here](./wasi-mpi-rs/sample_outputs/IMB/).
-
-### IS
-<img src="./wasi-mpi-rs/sample_outputs/IS/is_mops.png" width="400" height="400"/>
-
-### Note:
-On execution inside the container, the performance difference between the native execution of the application and MPIWasm can be around 8-12%. Also, the plots can vary depending on where the container is executing.
 
 ## Running large-scale experiments on an HPC system.
 This section describes running MPIWasm for executing MPI applications on multiple nodes of an HPC system. For this, a user needs to do the following:
