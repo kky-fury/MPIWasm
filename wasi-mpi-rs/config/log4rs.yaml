@@ -1,0 +1,21 @@
+# Scan this file for changes every 30 seconds
+refresh_rate: 30 seconds
+
+appenders:
+  # An appender named "stdout" that writes to stdout
+  stdout:
+    kind: console
+
+# Set the default logging level to "warn" and attach the "stdout" appender to the root
+root:
+  level: warn
+  appenders:
+    - stdout
+
+loggers:
+  # Raise the maximum log level for HTTP logs to "info"
+  actix_web::middleware::logger:
+    level: info
+  # Raise the maximum log level for our own logs to "info"
+  api:
+    level: info

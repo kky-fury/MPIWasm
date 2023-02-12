@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  centos-8-2:
+    image: kkyfury/centos-8-2-modified:v1
+    build:
+      context: .
+      dockerfile: .gitlab/ci/images/centos-8-2.Dockerfile
+    # List individual subdirectories to avoid sharing cargo's target/ build cache between images
+    # This allows multiple containers to run 'cargo build' at the same time
+    volumes:
+      - ./.cargo/:/s/.cargo
+      - ./config/:/s/config
+      - ./examples/:/s/examples
+      - ./src/:/s/src
+      - ./tests/src/:/s/tests/src
+      - ./tests/CMakeLists.txt:/s/tests/CMakeLists.txt
+      - ./tests/wasi-cmake.sh:/s/tests/wasi-cmake.sh
+      - ./Cargo.lock/:/s/Cargo.lock
+      - ./Cargo.toml/:/s/Cargo.toml
+    working_dir: /s
+
+  opensuse-15-1:
+    image: kkyfury/opensuse-15-1-modified:v2
+    build:
+      context: .
+      dockerfile: .gitlab/ci/images/opensuse-15-1-v2.Dockerfile
+    # List individual subdirectories to avoid sharing cargo's target/ build cache between images
+    # This allows multiple containers to run 'cargo build' at the same time
+    volumes:
+      - ./.cargo/:/s/.cargo
+      - ./config/:/s/config
+      - ./examples/:/s/examples
+      - ./src/:/s/src
+      - ./tests/src/:/s/tests/src
+      - ./tests/CMakeLists.txt:/s/tests/CMakeLists.txt
+      - ./tests/wasi-cmake.sh:/s/tests/wasi-cmake.sh
+      - ./Cargo.lock/:/s/Cargo.lock
+      - ./Cargo.toml/:/s/Cargo.toml
+    working_dir: /s
+
+  ubuntu-20-04:
+    image: kkyfury/ubuntumodifiedbase:v1
+    build:
+      context: .
+      dockerfile: .gitlab/ci/images/ubuntu-20-04.Dockerfile
+    # List individual subdirectories to avoid sharing cargo's target/ build cache between images
+    # This allows multiple containers to run 'cargo build' at the same time
+    volumes:
+      - ./.cargo/:/s/.cargo
+      - ./config/:/s/config
+      - ./examples/:/s/examples
+      - ./src/:/s/src
+      - ./tests/src/:/s/tests/src
+      - ./tests/CMakeLists.txt:/s/tests/CMakeLists.txt
+      - ./tests/wasi-cmake.sh:/s/tests/wasi-cmake.sh
+      - ./Cargo.lock/:/s/Cargo.lock
+      - ./Cargo.toml/:/s/Cargo.toml
+    working_dir: /s
+
+  macos-monterey:
+    image: kkyfury/macosmodified:v1
+    build:
+      context: .
+      dockerfile: .gitlab/ci/images/osx-monterey.Dockerfile
+    volumes:
+      - ./.cargo/:/home/arch/s/.cargo
+      - ./config/:/home/arch/s/config
+      - ./examples/:/home/arch/s/examples
+      - ./src/:/home/arch/s/src
+      - ./tests/src/:/home/arch/s/tests/src
+      - ./tests/CMakeLists.txt:/home/arch/s/tests/CMakeLists.txt
+      - ./tests/wasi-cmake.sh:/home/arch/s/tests/wasi-cmake.sh
+      - ./Cargo.lock/:/home/arch/s/Cargo.lock
+      - ./Cargo.toml/:/home/arch/s/Cargo.toml
+    working_dir: /home/arch/s

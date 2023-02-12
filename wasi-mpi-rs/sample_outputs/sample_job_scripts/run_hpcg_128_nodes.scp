@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# Job Name and Files (also --job-name)
+#SBATCH -J benchmarks
+
+#Output and error (also --output, --error):
+#SBATCH -o /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/hpcg_run_results_ppopp_128_nodes.out
+#SBATCH -e /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/hpcg_run_results_ppopp_128_nodes.out
+
+# Wall clock limit:
+#SBATCH --time=06:00:00
+#SBATCH --account=h039w
+#SBATCH --partition=general
+
+#SBATCH --nodes=128
+#SBATCH --ntasks=6144
+#SBATCH --ntasks-per-node=48
+
+module load slurm_setup
+module unload intel-mpi/2019-intel
+module unload intel-mkl/2020 
+module unload intel-oneapi-compilers/2021.4.0 
+
+module load openmpi/4.0.7-gcc11
+hostname
+
+
+#Running HPCG native
+#4 Nodes
+mpirun -np 192 ./xhpcg >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_clang.out
+
+#16 Nodes
+mpirun -np 768 ./xhpcg >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_clang.out
+
+#32 Nodes
+mpirun -np 1536 ./xhpcg >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_clang.out
+
+#64 Nodes
+mpirun -np 3072 ./xhpcg >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_clang.out
+
+#128 Nodes
+mpirun -np 6144 ./xhpcg >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_clang.out
+
+#mpirun -np 6144 ./IMB-MPI1 -npmin 6144 Sendrecv Allreduce Reduce Allgather Gather Scatter Alltoall Bcast
+
+#Running IntelMPI benchmarks with MPIWasm
+
+#4 Nodes
+# mpirun -np 192 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_wasm_1.out
+# mpirun -np 192 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_wasm_2.out
+mpirun -np 192 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_wasm_3.out
+mpirun -np 192 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_wasm_4.out
+mpirun -np 192 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/4_nodes/hpcg_run_results_ppopp_4_nodes_wasm_5.out
+
+#16 Nodes
+# mpirun -np 768 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_wasm_1.out
+# mpirun -np 768 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_wasm_2.out
+
+mpirun -np 768 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_wasm_3.out
+mpirun -np 768 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_wasm_4.out
+mpirun -np 768 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/16_nodes/hpcg_run_results_ppopp_16_nodes_wasm_5.out
+
+
+#32 Nodes
+# mpirun -np 1536 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_wasm_1.out
+# mpirun -np 1536 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_wasm_2.out
+
+mpirun -np 1536 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_wasm_3.out
+mpirun -np 1536 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_wasm_4.out
+mpirun -np 1536 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/32_nodes/hpcg_run_results_ppopp_32_nodes_wasm_5.out
+
+#64 Nodes
+# mpirun -np 3072 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_wasm_1.out
+# mpirun -np 3072 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_wasm_2.out
+
+mpirun -np 3072 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_wasm_3.out
+mpirun -np 3072 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_wasm_4.out
+mpirun -np 3072 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/64_nodes/hpcg_run_results_ppopp_64_nodes_wasm_5.out
+
+
+#128 Nodes
+# mpirun -np 6144 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_wasm_1.out
+# mpirun -np 6144 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_wasm_2.out
+
+mpirun -np 6144 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_wasm_3.out
+mpirun -np 6144 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_wasm_4.out
+mpirun -np 6144 ./embedder_new xhpcg-simd.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/HPCG/128_nodes/hpcg_run_results_ppopp_128_nodes_wasm_5.out
+

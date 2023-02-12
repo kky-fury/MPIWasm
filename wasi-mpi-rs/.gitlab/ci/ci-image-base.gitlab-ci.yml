@@ -1,0 +1,17 @@
+# Variables:
+#   IMAGE_TAG: tag to build+push
+#   DOCKERFILE: filename of Dockerfile
+#   PLATFORM: CPU architecture of runner and Docker image (amd64/arm64)
+.ci-image-base:
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ "" ]
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$(echo -n ${CI_REGISTRY_USER}:${CI_REGISTRY_PASSWORD} | base64)\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor
+      --cache
+      --context=$CI_PROJECT_DIR
+      --dockerfile=$CI_PROJECT_DIR/.gitlab/ci/images/$DOCKERFILE
+      --customPlatform=linux/$PLATFORM
+      --destination=$CI_REGISTRY_IMAGE/$IMAGE_TAG:$CI_COMMIT_REF_SLUG-$PLATFORM

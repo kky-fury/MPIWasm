@@ -1,0 +1,133 @@
+#!/bin/bash
+
+# Job Name and Files (also --job-name)
+#SBATCH -J benchmarks
+
+#Output and error (also --output, --error):
+#SBATCH -o /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/is_run_results_ppopp_128_nodes.out
+#SBATCH -e /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/is_run_results_ppopp_128_nodes.out
+
+# Wall clock limit:
+#SBATCH --time=06:00:00
+#SBATCH --account=h039w
+#SBATCH --partition=general
+
+#SBATCH --nodes=128
+#SBATCH --ntasks=6144
+#SBATCH --ntasks-per-node=48
+
+module load slurm_setup
+module unload intel-mpi/2019-intel
+module unload intel-mkl/2020 
+module unload intel-oneapi-compilers/2021.4.0 
+
+module load openmpi/4.0.7-gcc11
+hostname
+
+
+#Running IS native
+
+
+#64 Processes
+mpirun -np 64 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/64_processes/is_run_results_ppopp_64_processes_clang_1.out
+mpirun -np 64 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/64_processes/is_run_results_ppopp_64_processes_clang_2.out
+mpirun -np 64 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/64_processes/is_run_results_ppopp_64_processes_clang_3.out
+mpirun -np 64 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/64_processes/is_run_results_ppopp_64_processes_clang_4.out
+mpirun -np 64 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/64_processes/is_run_results_ppopp_64_processes_clang_5.out
+
+#128 Processes
+mpirun -np 128 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/128_processes/is_run_results_ppopp_128_processes_clang_1.out
+mpirun -np 128 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/128_processes/is_run_results_ppopp_128_processes_clang_2.out
+mpirun -np 128 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/128_processes/is_run_results_ppopp_128_processes_clang_3.out
+mpirun -np 128 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/128_processes/is_run_results_ppopp_128_processes_clang_4.out
+mpirun -np 128 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/128_processes/is_run_results_ppopp_128_processes_clang_5.out
+
+#256 Processes
+mpirun -np 256 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/256_processes/is_run_results_ppopp_256_processes_clang_1.out
+mpirun -np 256 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/256_processes/is_run_results_ppopp_256_processes_clang_2.out
+mpirun -np 256 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/256_processes/is_run_results_ppopp_256_processes_clang_3.out
+mpirun -np 256 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/256_processes/is_run_results_ppopp_256_processes_clang_4.out
+mpirun -np 256 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/256_processes/is_run_results_ppopp_256_processes_clang_5.out
+
+#512 Processes
+mpirun -np 512 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/512_processes/is_run_results_ppopp_512_processes_clang_1.out
+mpirun -np 512 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/512_processes/is_run_results_ppopp_512_processes_clang_2.out
+mpirun -np 512 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/512_processes/is_run_results_ppopp_512_processes_clang_3.out
+mpirun -np 512 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/512_processes/is_run_results_ppopp_512_processes_clang_4.out
+mpirun -np 512 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/512_processes/is_run_results_ppopp_512_processes_clang_5.out
+
+#1024 Processes
+mpirun -np 1024 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/1024_processes/is_run_results_ppopp_1024_processes_clang_1.out
+mpirun -np 1024 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/1024_processes/is_run_results_ppopp_1024_processes_clang_2.out
+mpirun -np 1024 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/1024_processes/is_run_results_ppopp_1024_processes_clang_3.out
+mpirun -np 1024 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/1024_processes/is_run_results_ppopp_1024_processes_clang_4.out
+mpirun -np 1024 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/1024_processes/is_run_results_ppopp_1024_processes_clang_5.out
+
+#2048
+mpirun -np 2048 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/2048_processes/is_run_results_ppopp_2048_processes_clang_1.out
+mpirun -np 2048 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/2048_processes/is_run_results_ppopp_2048_processes_clang_2.out
+mpirun -np 2048 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/2048_processes/is_run_results_ppopp_2048_processes_clang_3.out
+mpirun -np 2048 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/2048_processes/is_run_results_ppopp_2048_processes_clang_4.out
+mpirun -np 2048 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/2048_processes/is_run_results_ppopp_2048_processes_clang_5.out
+
+#4096
+mpirun -np 4096 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/4096_processes/is_run_results_ppopp_4096_processes_clang_1.out
+mpirun -np 4096 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/4096_processes/is_run_results_ppopp_4096_processes_clang_2.out
+mpirun -np 4096 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/4096_processes/is_run_results_ppopp_4096_processes_clang_3.out
+mpirun -np 4096 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/4096_processes/is_run_results_ppopp_4096_processes_clang_4.out
+mpirun -np 4096 ./is.C.x >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/native_clang_new/IS/4096_processes/is_run_results_ppopp_4096_processes_clang_5.out
+
+
+#Running IS WASM
+
+#64 Processes
+mpirun -np 64 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/64_processes/is_run_results_ppopp_64_processes_wasm_1.out
+mpirun -np 64 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/64_processes/is_run_results_ppopp_64_processes_wasm_2.out
+mpirun -np 64 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/64_processes/is_run_results_ppopp_64_processes_wasm_3.out
+mpirun -np 64 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/64_processes/is_run_results_ppopp_64_processes_wasm_4.out
+mpirun -np 64 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/64_processes/is_run_results_ppopp_64_processes_wasm_5.out
+
+
+#128 Processes
+mpirun -np 128 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/128_processes/is_run_results_ppopp_128_processes_wasm_1.out
+mpirun -np 128 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/128_processes/is_run_results_ppopp_128_processes_wasm_2.out
+mpirun -np 128 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/128_processes/is_run_results_ppopp_128_processes_wasm_3.out
+mpirun -np 128 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/128_processes/is_run_results_ppopp_128_processes_wasm_4.out
+mpirun -np 128 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/128_processes/is_run_results_ppopp_128_processes_wasm_5.out
+
+#256 Processes
+mpirun -np 256 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/256_processes/is_run_results_ppopp_256_processes_wasm_1.out
+mpirun -np 256 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/256_processes/is_run_results_ppopp_256_processes_wasm_2.out
+mpirun -np 256 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/256_processes/is_run_results_ppopp_256_processes_wasm_3.out
+mpirun -np 256 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/256_processes/is_run_results_ppopp_256_processes_wasm_4.out
+mpirun -np 256 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/256_processes/is_run_results_ppopp_256_processes_wasm_5.out
+
+#512 Processes
+mpirun -np 512 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/512_processes/is_run_results_ppopp_512_processes_wasm_1.out
+mpirun -np 512 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/512_processes/is_run_results_ppopp_512_processes_wasm_2.out
+mpirun -np 512 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/512_processes/is_run_results_ppopp_512_processes_wasm_3.out
+mpirun -np 512 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/512_processes/is_run_results_ppopp_512_processes_wasm_4.out
+mpirun -np 512 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/512_processes/is_run_results_ppopp_512_processes_wasm_5.out
+
+#1024 Processes
+mpirun -np 1024 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/1024_processes/is_run_results_ppopp_1024_processes_wasm_1.out
+mpirun -np 1024 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/1024_processes/is_run_results_ppopp_1024_processes_wasm_2.out
+mpirun -np 1024 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/1024_processes/is_run_results_ppopp_1024_processes_wasm_3.out
+mpirun -np 1024 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/1024_processes/is_run_results_ppopp_1024_processes_wasm_4.out
+mpirun -np 1024 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/1024_processes/is_run_results_ppopp_1024_processes_wasm_5.out
+
+#2048 Processes
+mpirun -np 2048 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/2048_processes/is_run_results_ppopp_2048_processes_wasm_1.out
+mpirun -np 2048 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/2048_processes/is_run_results_ppopp_2048_processes_wasm_2.out
+mpirun -np 2048 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/2048_processes/is_run_results_ppopp_2048_processes_wasm_3.out
+mpirun -np 2048 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/2048_processes/is_run_results_ppopp_2048_processes_wasm_4.out
+mpirun -np 2048 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/2048_processes/is_run_results_ppopp_2048_processes_wasm_5.out
+
+#4096 Processes
+mpirun -np 4096 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/4096_processes/is_run_results_ppopp_4096_processes_wasm_1.out
+mpirun -np 4096 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/4096_processes/is_run_results_ppopp_4096_processes_wasm_2.out
+mpirun -np 4096 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/4096_processes/is_run_results_ppopp_4096_processes_wasm_3.out
+mpirun -np 4096 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/4096_processes/is_run_results_ppopp_4096_processes_wasm_4.out
+mpirun -np 4096 ./embedder_new is.C.x.wasm >& /dss/dsshome1/01/ga53doy3/PPoPP_23_Results/wasm_new/IS/4096_processes/is_run_results_ppopp_4096_processes_wasm_5.out
+
+

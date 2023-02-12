@@ -1,0 +1,19 @@
+# Variables:
+#   TARGET: Used for cache-key and to match CI image
+#   FEATURE: Selects MPI library to compile against
+.compile-linux-base:
+  # Cache target/ in between jobs
+  cache:
+    key: $TARGET-$PLATFORM-${CI_COMMIT_REF_SLUG}
+    paths:
+      - target/
+  image: $CI_REGISTRY_IMAGE/ci-$TARGET:$CI_COMMIT_REF_SLUG-$PLATFORM
+  script:
+    - cargo build --release --no-default-features --features $FEATURE
+    - mv target/release/api ./api
+    - mv target/release/embedder ./embedder
+  artifacts:
+    paths:
+      - ./api
+      - ./embedder
+      - ./config/*

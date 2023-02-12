@@ -1,0 +1,2 @@
+# Set this to a routable IP in a cluster environment
+host: '0.0.0.0:8080'
