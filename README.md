@@ -184,3 +184,25 @@ Example for building the embedder for ubuntu:20.04 for arm64 on an x86_64 machin
     sudo docker buildx build --push -f Dockerfile --platform linux/arm64 -t kkyfury/embedderarm:v1 .
 
 Please change the docker image tags according to your docker registry account, i.e., replace kkyfury with your registry username. Following this, the image name in the FROM keyword in the [Dockerfile](./wasi-mpi-rs/Dockerfile) needs to changed accordingly.
+
+## Citation
+If you use MPIWasm in your work, please cite our paper:
+
+```
+@inproceedings{mpiwasm,
+author = {Chadha, Mohak and Krueger, Nils and John, Jophin and Jindal, Anshul and Gerndt, Michael and Benedict, Shajulin},
+title = {Exploring the Use of WebAssembly in HPC},
+year = {2023},
+isbn = {9798400700156},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3572848.3577436},
+doi = {10.1145/3572848.3577436},
+pages = {92–106},
+numpages = {15},
+keywords = {wasmer, wasm, WebAssembly, MPI, HPC},
+location = {Montreal, QC, Canada},
+series = {PPoPP '23}
+}
+}
+```
