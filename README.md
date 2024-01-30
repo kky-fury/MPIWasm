@@ -190,19 +190,19 @@ If you use MPIWasm in your work, please cite our paper:
 
 ```
 @inproceedings{mpiwasm,
-author = {Chadha, Mohak and Krueger, Nils and John, Jophin and Jindal, Anshul and Gerndt, Michael and Benedict, Shajulin},
-title = {Exploring the Use of WebAssembly in HPC},
-year = {2023},
-isbn = {9798400700156},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3572848.3577436},
-doi = {10.1145/3572848.3577436},
-pages = {92–106},
-numpages = {15},
-keywords = {wasmer, wasm, WebAssembly, MPI, HPC},
-location = {Montreal, QC, Canada},
-series = {PPoPP '23}
+    author = {Chadha, Mohak and Krueger, Nils and John, Jophin and Jindal, Anshul and Gerndt, Michael and Benedict, Shajulin},
+    title = {Exploring the Use of WebAssembly in HPC},
+    year = {2023},
+    isbn = {9798400700156},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3572848.3577436},
+    doi = {10.1145/3572848.3577436},
+    pages = {92–106},
+    numpages = {15},
+    keywords = {wasmer, wasm, WebAssembly, MPI, HPC},
+    location = {Montreal, QC, Canada},
+    series = {PPoPP '23}
 }
-}
+
 ```
